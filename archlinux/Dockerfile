@@ -1,9 +1,9 @@
 FROM imriss/archlinux
 
-RUN echo 'ManifoldLearning Julia on Arch Linux'
+RUN echo 'Python Eve on Arch Linux'
 
 MAINTAINER Reza Farrahi <imriss@ieee.org>
-LABEL description="ManifoldLearning Julia / Arch Linux"
+LABEL description="Python Eve / Arch Linux"
 
 RUN  pacman -Syyu --noconfirm \
   && pacman -S findutils nano vi --needed --noconfirm \
