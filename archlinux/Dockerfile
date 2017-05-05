@@ -6,11 +6,11 @@ MAINTAINER Reza Farrahi <imriss@ieee.org>
 LABEL description="Python Eve / Arch Linux"
 
 RUN  pacman -Syyu --noconfirm \
-  && pacman -S findutils nano vi --needed --noconfirm \
+  && pacman -S findutils nano vi wget --needed --noconfirm \
   && pacman-db-upgrade \
   && export editor=nano \
   && pacman -S --needed --noconfirm git wget gnuplot \
-&& git config --global url."https://".insteadOf git:// 
+  && git config --global url."https://".insteadOf git:// 
 
 # DDADD https://raw.githubusercontent.com/imriss/scylla/master/aur.sh /usr/sbin/aur.sh
 # DDADD https://raw.githubusercontent.com/imriss/scylla/master/add-aur.sh /usr/sbin/add-aur
