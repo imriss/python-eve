@@ -23,7 +23,7 @@ RUN add-aur docker
 RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm python python-pip'
 
 RUN pip install eve \
-  && pip install eve-auth-jwt
+  && pip install eve-auth-jwt flask-cors 
 
 # RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pactree -u pacman |sort) <(pactree -u sudo |sort) <(pacman -Qgq base | sort) |sort -u) | xargs pacman -Rdd --noconfirm" \
 RUN pacman -Scc --noconfirm \
