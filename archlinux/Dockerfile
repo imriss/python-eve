@@ -27,8 +27,9 @@ RUN su docker -c 'pacaur -S --needed --noprogressbar --noedit --noconfirm python
 RUN pip install eve \
   && pip install eve-auth-jwt flask-cors 
 
-# RUN /bin/bash -c "comm -23 <(pacman -Qq) <(cat <(pactree -u julia |sort) <(pactree -u pacman |sort) <(pactree -u sudo |sort) <(pacman -Qgq base | sort) |sort -u) | xargs pacman -Rdd --noconfirm" \
-RUN pacman -Scc --noconfirm \
+# savelist=("mpfr" "pacman" "sudo" "gawk" "python" "gnuplot") 
+RUN /bin/bash -c 'pacman -Rdd --noconfirm $(comm -23 <(pacman -Qq | sort -u) <(cat <((for i in "mpfr" "pacman" "sudo" "gawk" "python" "gnuplot"; do pactree -ul "$i"; done) | sort -u) |sort -u))' \ 
+  && pacman -Scc --noconfirm \
   &&  rm /var/cache/pacman/pkg/* \
   && paccache -rf 
 
